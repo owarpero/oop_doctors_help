@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <ItemGroup>
+        <ProjectReference Include="..\DoctorsHelp.Application.Abstractions\DoctorsHelp.Application.Abstractions.csproj"/>
+        <ProjectReference Include="..\DoctorsHelp.Application.Contracts\DoctorsHelp.Application.Contracts.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions"/>
+    </ItemGroup>
+
+</Project>
