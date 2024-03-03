@@ -26,6 +26,6 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add oop_doctors_help/node-output/*.html
+        git add ./node-output/*.html
         git commit -m "Update HTML documentation" || echo "No changes to commit"
         git push
