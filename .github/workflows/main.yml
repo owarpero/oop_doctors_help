@@ -1,0 +1,33 @@
+name: Swagger to HTML
+
+on:
+  push:
+    branches:
+      - swaggerhub
+
+jobs:
+  generate-and-commit-html:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+
+    - name: Install Redoc CLI
+      run: npm install -g redoc-cli
+
+    - name: Generate HTML from Swagger YAML
+      run: redoc-cli bundle swagger.yaml -o node-output/swagger.html
+
+    - name: Commit and Push HTML
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add node-output/swagger.html
+        git commit -m "Generate HTML from Swagger YAML" || echo "No changes to commit"
+        git push origin HEAD:swaggerhub
