@@ -16,7 +16,7 @@
     "/example" : {
       "get" : {
         "summary" : "Server example operation",
-        "description" : "This is an example operation to show how security is applied to the call.",
+        "description" : "Test 2",
         "responses" : {
           "200" : {
             "description" : "OK"
