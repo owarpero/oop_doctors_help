@@ -1,0 +1,31 @@
+name: Swagger to HTML
+
+on:
+  push:
+    branches:
+      - main # Или ваша рабочая ветка
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Set up Java
+      uses: actions/setup-java@v1
+      with:
+        java-version: '11'
+    
+    - name: Generate HTML from Swagger YAML
+      run: |
+        wget http://central.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.0/swagger-codegen-cli-3.0.0.jar
+        java -jar swagger-codegen-cli-3.0.0.jar generate -i path/to/your/swagger.yaml -l html2 -o path/to/your/output/folder
+
+    - name: Commit HTML files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add path/to/your/output/folder/*.html
+        git commit -m "Update HTML documentation" || echo "No changes to commit"
+        git push
