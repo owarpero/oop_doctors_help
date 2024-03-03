@@ -1,33 +1,31 @@
-name: Swagger to HTML
-
+name: Swagger Sync and HTML Generation
 on:
   push:
     branches:
       - swaggerhub
 
 jobs:
-  generate-and-commit-html:
+  generate-and-push-html:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 'latest'
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
 
-    - name: Install Redocly CLI
-      run: npm install -g @redocly/cli
+      - name: Install Redocly CLI
+        run: npm install -g @redocly/cli
 
-    - name: Generate HTML from Swagger YAML
-      run: npx @redocly/openapi-cli@latest bundle node-output/swagger.yaml -o node-output/swagger.html --ext html
+      - name: Generate HTML from Swagger YAML
+        run: redocly bundle swagger.yaml --output ./node-output/index.html
 
-    - name: Commit and Push HTML
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add node-output/swagger.html
-        git commit -m "Generate HTML from Swagger YAML" || echo "No changes to commit"
-        git push origin HEAD:swaggerhub
+      - name: Commit HTML file
+        run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+          git add ./node-output/index.html
+          git commit -m "Update HTML documentation" || echo "No changes to commit"
+          git push
