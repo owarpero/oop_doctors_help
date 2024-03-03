@@ -1,263 +1,910 @@
-<!doctype html>
 <html>
   <head>
-    <title>Sample Access Code Flow OAuth2 Project</title>
-    <style type="text/css">
-      body {
-      	font-family: Trebuchet MS, sans-serif;
-      	font-size: 15px;
-      	color: #444;
-      	margin-right: 24px;
-      }
-      
-      h1	{
-      	font-size: 25px;
-      }
-      h2	{
-      	font-size: 20px;
-      }
-      h3	{
-      	font-size: 16px;
-      	font-weight: bold;
-      }
-      hr	{
-      	height: 1px;
-      	border: 0;
-      	color: #ddd;
-      	background-color: #ddd;
-      }
-      
-      .app-desc {
-        clear: both;
-        margin-left: 20px;
-      }
-      .param-name {
-        width: 100%;
-      }
-      .license-info {
-        margin-left: 20px;
-      }
-      
-      .license-url {
-        margin-left: 20px;
-      }
-      
-      .model {
-        margin: 0 0 0px 20px;
-      }
-      
-      .method {
-        margin-left: 20px;
-      }
-      
-      .method-notes	{
-      	margin: 10px 0 20px 0;
-      	font-size: 90%;
-      	color: #555;
-      }
-      
-      pre {
-        padding: 10px;
-        margin-bottom: 2px;
-      }
-      
-      .http-method {
-       text-transform: uppercase;
-      }
-      
-      pre.get {
-        background-color: #0f6ab4;
-      }
-      
-      pre.post {
-        background-color: #10a54a;
-      }
-      
-      pre.put {
-        background-color: #c5862b;
-      }
-      
-      pre.delete {
-        background-color: #a41e22;
-      }
-      
-      .huge	{
-      	color: #fff;
-      }
-      
-      pre.example {
-        background-color: #f3f3f3;
-        padding: 10px;
-        border: 1px solid #ddd;
-      }
-      
-      code {
-        white-space: pre;
-      }
-      
-      .nickname {
-        font-weight: bold;
-      }
-      
-      .method-path {
-        font-size: 1.5em;
-        background-color: #0f6ab4;
-      }
-      
-      .up {
-        float:right;
-      }
-      
-      .parameter {
-        width: 500px;
-      }
-      
-      .param {
-        width: 500px;
-        padding: 10px 0 0 20px;
-        font-weight: bold;
-      }
-      
-      .param-desc {
-        width: 700px;
-        padding: 0 0 0 20px;
-        color: #777;
-      }
-      
-      .param-type {
-        font-style: italic;
-      }
-      
-      .param-enum-header {
-      width: 700px;
-      padding: 0 0 0 60px;
-      color: #777;
-      font-weight: bold;
-      }
-      
-      .param-enum {
-      width: 700px;
-      padding: 0 0 0 80px;
-      color: #777;
-      font-style: italic;
-      }
-      
-      .field-label {
-        padding: 0;
-        margin: 0;
-        clear: both;
-      }
-      
-      .field-items	{
-      	padding: 0 0 15px 0;
-      	margin-bottom: 15px;
-      }
-      
-      .return-type {
-        clear: both;
-        padding-bottom: 10px;
-      }
-      
-      .param-header {
-        font-weight: bold;
-      }
-      
-      .method-tags {
-        text-align: right;
-      }
-      
-      .method-tag {
-        background: none repeat scroll 0% 0% #24A600;
-        border-radius: 3px;
-        padding: 2px 10px;
-        margin: 2px;
-        color: #FFF;
-        display: inline-block;
-        text-decoration: none;
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.19.5/swagger-ui.css" >
+    <style>
+      .topbar {
+        display: none;
       }
     </style>
   </head>
+
   <body>
-  <h1>Sample Access Code Flow OAuth2 Project</h1>
-    <div class="app-desc">This is an example of using OAuth2 Access Code Flow in a specification to describe security to your API.</div>
-    <div class="app-desc">More information: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
-    <div class="app-desc">Contact Info: <a href="hello@helloreverb.com">hello@helloreverb.com</a></div>
-    <div class="app-desc">Version: 1.0.0</div>
-    <div class="app-desc">BasePath:/HURSPASHA/oop/1.0.0</div>
-    <div class="license-info">All rights reserved</div>
-    <div class="license-url">http://apache.org/licenses/LICENSE-2.0.html</div>
-  <h2>Access</h2>
-    <ol>
-      <li>OAuth AuthorizationUrl:http://example.com/oauth/authTokenUrl:http://example.com/oauth/token</li>
-    </ol>
-
-  <h2><a name="__Methods">Methods</a></h2>
-  [ Jump to <a href="#__Models">Models</a> ]
-
-  <h3>Table of Contents </h3>
-  <div class="method-summary"></div>
-  <h4><a href="#Default">Default</a></h4>
-  <ul>
-  <li><a href="#exampleGet"><code><span class="http-method">get</span> /example</code></a></li>
-  <li><a href="#pingGet"><code><span class="http-method">get</span> /ping</code></a></li>
-  </ul>
-
-  <h1><a name="Default">Default</a></h1>
-  <div class="method"><a name="exampleGet"></a>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /example</code></pre></div>
-    <div class="method-summary">Server example operation (<span class="nickname">exampleGet</span>)</div>
-    <div class="method-notes">Test 2</div>
-
-
-
-
-
-
-
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    OK
-        <a href="#"></a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="pingGet"></a>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /ping</code></pre></div>
-    <div class="method-summary">Server heartbeat operation (<span class="nickname">pingGet</span>)</div>
-    <div class="method-notes">This operation shows how to override the global security defined above, as we want to open it up for all users.</div>
-
-
-
-
-
-
-
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    OK
-        <a href="#"></a>
-  </div> <!-- method -->
-  <hr/>
-
-  <h2><a name="__Models">Models</a></h2>
-  [ Jump to <a href="#__Methods">Methods</a> ]
-
-  <h3>Table of Contents</h3>
-  <ol>
-  </ol>
-
+    <div id="swagger-ui"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.19.5/swagger-ui-bundle.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.19.5/swagger-ui-standalone-preset.js"> </script>
+    <script src="./openapi.js"> </script>
+    <script>
+      window.onload = function() {
+        const ui = SwaggerUIBundle({
+          spec: {
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "description": "SwaggerHub API Auto Mocking",
+      "url": "https://virtserver.swaggerhub.com/HURSPASHA/oop/1.0.0"
+    }
+  ],
+  "info": {
+    "title": "Healthcare Management System API",
+    "description": "API for managing users, employees, specializations, schedules, appointments, and reviews in a healthcare system.",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/users/register": {
+      "post": {
+        "summary": "Register a new user",
+        "tags": [
+          "Users"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserRegistration"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User created successfully"
+          }
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "summary": "User login",
+        "tags": [
+          "Users"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login successful"
+          }
+        }
+      }
+    },
+    "/users/{user_id}": {
+      "get": {
+        "summary": "Get user details",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User details retrieved successfully"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update user  details",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a user",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "User deleted successfully"
+          }
+        }
+      }
+    },
+    "/specializations": {
+      "post": {
+        "summary": "Create a new specialization",
+        "tags": [
+          "Specializations"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Specialization"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Specialization created successfully"
+          }
+        }
+      },
+      "get": {
+        "summary": "Get list of all specializations",
+        "tags": [
+          "Specializations"
+        ],
+        "responses": {
+          "200": {
+            "description": "List of specializations retrieved successfully"
+          }
+        }
+      }
+    },
+    "/specializations/{specialization_id}": {
+      "put": {
+        "summary": "Update specialization information",
+        "tags": [
+          "Specializations"
+        ],
+        "parameters": [
+          {
+            "name": "specialization_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Specialization"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Specialization updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a specialization",
+        "tags": [
+          "Specializations"
+        ],
+        "parameters": [
+          {
+            "name": "specialization_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Specialization deleted successfully"
+          }
+        }
+      }
+    },
+    "/employees": {
+      "post": {
+        "summary": "Add a new employee (doctor)",
+        "tags": [
+          "Employees"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Employee"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Employee added successfully"
+          }
+        }
+      },
+      "get": {
+        "summary": "Get list of all employees",
+        "tags": [
+          "Employees"
+        ],
+        "responses": {
+          "200": {
+            "description": "List of employees retrieved successfully"
+          }
+        }
+      }
+    },
+    "/employees/{employee_id}": {
+      "get": {
+        "summary": "Get employee details",
+        "tags": [
+          "Employees"
+        ],
+        "parameters": [
+          {
+            "name": "employee_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Employee details retrieved successfully"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update employee information",
+        "tags": [
+          "Employees"
+        ],
+        "parameters": [
+          {
+            "name": "employee_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Employee"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Employee updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an employee",
+        "tags": [
+          "Employees"
+        ],
+        "parameters": [
+          {
+            "name": "employee_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Employee deleted successfully"
+          }
+        }
+      }
+    },
+    "/schedule": {
+      "post": {
+        "summary": "Create a new schedule entry",
+        "tags": [
+          "Schedule"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Schedule"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Schedule entry created successfully"
+          }
+        }
+      }
+    },
+    "/schedule/{doctor_id}": {
+      "get": {
+        "summary": "Get schedule for a specific doctor",
+        "tags": [
+          "Schedule"
+        ],
+        "parameters": [
+          {
+            "name": "doctor_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Schedule retrieved successfully"
+          }
+        }
+      }
+    },
+    "/schedule/{schedule_id}": {
+      "put": {
+        "summary": "Update a schedule entry",
+        "tags": [
+          "Schedule"
+        ],
+        "parameters": [
+          {
+            "name": "schedule_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Schedule"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Schedule entry updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a schedule entry",
+        "tags": [
+          "Schedule"
+        ],
+        "parameters": [
+          {
+            "name": "schedule_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Schedule entry deleted successfully"
+          }
+        }
+      }
+    },
+    "/appointments": {
+      "post": {
+        "summary": "Create a new appointment",
+        "tags": [
+          "Appointments"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Appointment"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Appointment created successfully"
+          }
+        }
+      }
+    },
+    "/appointments/patient/{patient_id}": {
+      "get": {
+        "summary": "Get list of appointments for a specific patient",
+        "tags": [
+          "Appointments"
+        ],
+        "parameters": [
+          {
+            "name": "patient_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Appointments list retrieved successfully"
+          }
+        }
+      }
+    },
+    "/appointments/{appointment_id}": {
+      "put": {
+        "summary": "Update appointment information",
+        "tags": [
+          "Appointments"
+        ],
+        "parameters": [
+          {
+            "name": "appointment_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Appointment"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Appointment updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Cancel an appointment",
+        "tags": [
+          "Appointments"
+        ],
+        "parameters": [
+          {
+            "name": "appointment_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Appointment cancelled successfully"
+          }
+        }
+      }
+    },
+    "/reviews": {
+      "post": {
+        "summary": "Add a new review",
+        "tags": [
+          "Reviews"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Review"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Review added successfully"
+          }
+        }
+      }
+    },
+    "/reviews/{appointment_id}": {
+      "get": {
+        "summary": "Get list of reviews for a specific appointment",
+        "tags": [
+          "Reviews"
+        ],
+        "parameters": [
+          {
+            "name": "appointment_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reviews list retrieved successfully"
+          }
+        }
+      }
+    },
+    "/reviews/{review_id}": {
+      "put": {
+        "summary": "Update a review",
+        "tags": [
+          "Reviews"
+        ],
+        "parameters": [
+          {
+            "name": "review_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Review"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Review updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a review",
+        "tags": [
+          "Reviews"
+        ],
+        "parameters": [
+          {
+            "name": "review_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Review deleted successfully"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "UserRegistration": {
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "integer",
+            "description": "Auto-incremented user ID"
+          },
+          "name": {
+            "type": "string"
+          },
+          "surname": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string",
+            "description": "Unique phone number"
+          },
+          "email": {
+            "type": "string",
+            "description": "Unique email address"
+          },
+          "password": {
+            "type": "string"
+          },
+          "birthdate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Birthdate with time information"
+          }
+        },
+        "required": [
+          "name",
+          "surname",
+          "phone",
+          "email",
+          "password",
+          "birthdate"
+        ]
+      },
+      "User": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/UserRegistration"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "role": {
+                "type": "string",
+                "enum": [
+                  "USER",
+                  "DOCTOR",
+                  "ADMINISTRATOR"
+                ]
+              }
+            },
+            "required": [
+              "role"
+            ]
+          }
+        ]
+      },
+      "Specialization": {
+        "type": "object",
+        "properties": {
+          "specialization_id": {
+            "type": "integer",
+            "description": "Auto-incremented specialization ID"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "Employee": {
+        "type": "object",
+        "properties": {
+          "employee_id": {
+            "type": "integer",
+            "description": "Auto-incremented employee ID"
+          },
+          "user": {
+            "type": "integer",
+            "description": "Foreign key to Users"
+          },
+          "specialization": {
+            "type": "integer",
+            "description": "Foreign key to Specializations"
+          },
+          "graduate": {
+            "type": "string"
+          },
+          "experience": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "user",
+          "specialization",
+          "graduate",
+          "experience"
+        ]
+      },
+      "Schedule": {
+        "type": "object",
+        "properties": {
+          "schedule_id": {
+            "type": "integer",
+            "description": "Auto-incremented schedule ID"
+          },
+          "doctor_id": {
+            "type": "integer",
+            "description": "Foreign key to Employees"
+          },
+          "date_start": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Start date and time of the schedule"
+          },
+          "date_end": {
+            "type": "string",
+            "format": "date-time",
+            "description": "End date and time of the schedule"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "AVAILABLE",
+              "UNAVAILABLE"
+            ]
+          }
+        },
+        "required": [
+          "doctor_id",
+          "date_start",
+          "date_end",
+          "status"
+        ]
+      },
+      "Appointment": {
+        "type": "object",
+        "properties": {
+          "appointment_id": {
+            "type": "integer",
+            "description": "Auto-incremented appointment ID"
+          },
+          "patient_id": {
+            "type": "integer",
+            "description": "Foreign key to Users"
+          },
+          "schedule_id": {
+            "type": "integer",
+            "description": "Foreign key to Schedule"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation time of the appointment"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last updated time of the appointment"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "PLANNED",
+              "CANCELLED",
+              "FINISHED"
+            ]
+          }
+        },
+        "required": [
+          "patient_id",
+          "schedule_id",
+          "status"
+        ]
+      },
+      "Review": {
+        "type": "object",
+        "properties": {
+          "review_id": {
+            "type": "integer",
+            "description": "Auto-incremented review ID"
+          },
+          "appointment_id": {
+            "type": "integer",
+            "description": "Foreign key to Appointments"
+          },
+          "grade": {
+            "type": "integer",
+            "enum": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "description": "Grade of the review"
+          },
+          "comment": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation time of the review"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last updated time of the review"
+          }
+        },
+        "required": [
+          "appointment_id",
+          "grade",
+          "comment"
+        ]
+      }
+    }
+  }
+}
+,
+          dom_id: '#swagger-ui',
+          deepLinking: true,
+          presets: [
+            SwaggerUIBundle.presets.apis,
+            SwaggerUIStandalonePreset
+          ],
+          plugins: [
+            SwaggerUIBundle.plugins.DownloadUrl
+          ],
+          layout: "StandaloneLayout"
+        })
+     
+        window.ui = ui
+      }
+  </script>
   </body>
 </html>
