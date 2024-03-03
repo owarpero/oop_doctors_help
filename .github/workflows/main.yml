@@ -3,29 +3,31 @@ name: Swagger to HTML
 on:
   push:
     branches:
-      - main # Или ваша рабочая ветка
+      - swaggerhub
 
 jobs:
-  build:
+  generate-and-commit-html:
     runs-on: ubuntu-latest
-    
-    steps:
-    - uses: actions/checkout@v2
-    
-    - name: Set up Java
-      uses: actions/setup-java@v1
-      with:
-        java-version: '11'
-    
-    - name: Generate HTML from Swagger YAML
-      run: |
-          wget https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.0/swagger-codegen-cli-3.0.0.jar
-          java -jar swagger-codegen-cli-3.0.0.jar generate -i node-output -l html2 -o node-output
 
-    - name: Commit HTML files
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+
+    - name: Install Redoc CLI
+      run: npm install -g redoc-cli
+
+    - name: Generate HTML from Swagger YAML
+      run: redoc-cli bundle swagger.yaml -o node-output/swagger.html
+
+    - name: Commit and Push HTML
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add node-output/*.html
-        git commit -m "Update HTML documentation" || echo "No changes to commit"
-        git push
+        git add node-output/swagger.html
+        git commit -m "Generate HTML from Swagger YAML" || echo "No changes to commit"
+        git push origin HEAD:swaggerhub
