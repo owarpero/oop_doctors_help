@@ -63,9 +63,9 @@
 
 
 #### Индексы:
-Users(phone; email)
-Employees(user; specialization)
-Schedule(doctor_id, date_start, date_end, status)
-Appointments(patient_id, status)
+- Users(phone; email)
+- Employees(user; specialization)
+- Schedule(doctor_id, date_start, date_end, status)
+- Appointments(patient_id, status)
 
 [Swagger](https://owarpero.github.io/oop_doctors_help/node-output/)
