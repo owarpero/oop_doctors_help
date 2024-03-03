@@ -1,31 +1,33 @@
-name: Swagger Sync and HTML Generation
+name: Swagger to HTML
+
 on:
   push:
     branches:
       - swaggerhub
 
 jobs:
-  generate-and-push-html:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - name: Set up Java
+        uses: actions/setup-java@v2
         with:
-          node-version: '14'
+          distribution: 'adopt'
+          java-version: '11'
 
-      - name: Install Redocly CLI
-        run: npm install -g @redocly/cli
-
-      - name: Generate HTML from Swagger YAML
-        run: redocly bundle ./node-output/swagger.yaml --output ./node-output/index.html
-
-      - name: Commit HTML file
+      - name: Swagger Codegen
         run: |
-          git config --global user.email "you@example.com"
-          git config --global user.name "Your Name"
-          git add ./node-output/index.html
-          git commit -m "Update HTML documentation" || echo "No changes to commit"
+          wget https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.35/swagger-codegen-cli-3.0.35.jar -O swagger-codegen-cli.jar
+          java -jar swagger-codegen-cli.jar generate -i ./node-output/swagger.yaml -l html -o ./node-output/
+
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add ./node-output/*
+          git commit -m "Automatically generated HTML from Swagger" -a || echo "No changes to commit"
           git push
