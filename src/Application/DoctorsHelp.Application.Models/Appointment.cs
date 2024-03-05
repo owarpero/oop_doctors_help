@@ -2,7 +2,7 @@
 
 public class Appointment
 {
-    public Guid Id { get; set; }
+    public int Id { get; set; }
 
     public User Patient { get; set; }
 
