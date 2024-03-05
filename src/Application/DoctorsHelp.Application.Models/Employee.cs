@@ -2,7 +2,7 @@
 
 public class Employee
 {
-    public Guid Id { get; set; }
+    public int Id { get; set; }
 
     public User User { get; set; }
 

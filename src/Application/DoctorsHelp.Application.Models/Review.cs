@@ -2,7 +2,7 @@
 
 public class Review
 {
-    public Guid Id { get; set; }
+    public int Id { get; set; }
 
     public Appointment Appointment { get; set; }
 
