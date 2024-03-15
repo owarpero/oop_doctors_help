@@ -1,12 +1,12 @@
-﻿namespace DoctorsHelp.Application.Contracts;
+﻿using DoctorsHelp.Application.Models;
 
-using DoctorsHelp.Application.Models;
+namespace DoctorsHelp.Application.Contracts;
 
 public interface IAppointmentService
 {
     Appointment Create(User patient, Schedule schedule);
 
-    Appointment Get(int patientId);
+    Appointment GetAppointment(int patientId);
 
     Appointment Update(int id, Dictionary<string, string> data);
 

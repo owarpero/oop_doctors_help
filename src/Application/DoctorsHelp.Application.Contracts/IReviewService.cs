@@ -1,12 +1,12 @@
-﻿namespace DoctorsHelp.Application.Contracts;
+﻿using DoctorsHelp.Application.Models;
 
-using DoctorsHelp.Application.Models;
+namespace DoctorsHelp.Application.Contracts;
 
 public interface IReviewService
 {
     Review Create(Appointment appointment, int grade, string comment);
 
-    Review Get(int appointmentId);
+    Review GetReview(int appointmentId);
 
     Review Update(int id, Dictionary<string, string> data);
 

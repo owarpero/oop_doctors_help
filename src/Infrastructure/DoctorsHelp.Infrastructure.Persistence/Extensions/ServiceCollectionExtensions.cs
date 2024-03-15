@@ -1,11 +1,11 @@
-namespace DoctorsHelp.Infrastructure.Persistence.Extensions;
-
 using DoctorsHelp.Application.Abstractions.Persistence;
 using DoctorsHelp.Infrastructure.Persistence.Migrations;
 using DoctorsHelp.Infrastructure.Persistence.Plugins;
 using Itmo.Dev.Platform.Postgres.Extensions;
 using Itmo.Dev.Platform.Postgres.Plugins;
 using Microsoft.Extensions.DependencyInjection;
+
+namespace DoctorsHelp.Infrastructure.Persistence.Extensions;
 
 public static class ServiceCollectionExtensions
 {
