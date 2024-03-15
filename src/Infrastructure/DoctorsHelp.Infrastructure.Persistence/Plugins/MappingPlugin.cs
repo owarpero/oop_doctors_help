@@ -1,7 +1,7 @@
-namespace DoctorsHelp.Infrastructure.Persistence.Plugins;
-
 using Itmo.Dev.Platform.Postgres.Plugins;
 using Npgsql;
+
+namespace DoctorsHelp.Infrastructure.Persistence.Plugins;
 
 /// <summary>
 ///     Plugin for configuring NpgsqlDataSource's mappings

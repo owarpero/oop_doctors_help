@@ -4,7 +4,7 @@ public class Schedule
 {
     public int Id { get; set; }
 
-    public Employee Employee { get; set; }
+    public Employee? Employee { get; set; }
 
     public DateTime DateStart { get; set; }
 

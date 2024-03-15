@@ -1,5 +1,5 @@
-namespace DoctorsHelp.Infrastructure.Persistence;
-
 using DoctorsHelp.Application.Abstractions.Persistence;
+
+namespace DoctorsHelp.Infrastructure.Persistence;
 
 public class PersistenceContext : IPersistenceContext { }

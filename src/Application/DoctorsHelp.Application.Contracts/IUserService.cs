@@ -1,6 +1,6 @@
-﻿namespace DoctorsHelp.Application.Contracts;
+﻿using DoctorsHelp.Application.Models;
 
-using DoctorsHelp.Application.Models;
+namespace DoctorsHelp.Application.Contracts;
 
 public interface IUserService
 {
@@ -8,7 +8,7 @@ public interface IUserService
 
     User Login(string phone, string password);
 
-    User Get(int id);
+    User GetUser(int id);
 
     User Update(int id, Dictionary<string, string> data);
 

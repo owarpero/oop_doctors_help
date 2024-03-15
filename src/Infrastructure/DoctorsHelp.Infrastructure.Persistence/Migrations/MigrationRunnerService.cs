@@ -1,8 +1,8 @@
-namespace DoctorsHelp.Infrastructure.Persistence.Migrations;
-
 using Itmo.Dev.Platform.Postgres.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
+namespace DoctorsHelp.Infrastructure.Persistence.Migrations;
 
 /// <summary>
 ///     Background service for applying migrations.

@@ -1,6 +1,6 @@
-namespace DoctorsHelp.Application.Extensions;
-
 using Microsoft.Extensions.DependencyInjection;
+
+namespace DoctorsHelp.Application.Extensions;
 
 public static class ServiceCollectionExtensions
 {
