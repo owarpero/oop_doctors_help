@@ -2,7 +2,7 @@
 
 public class User
 {
-    public Guid Id { get; set; }
+    public Guid? Id { get; set; }
 
     public string? Name { get; set; }
 
@@ -14,7 +14,7 @@ public class User
 
     public string? HashedPassword { get; set; }
 
-    public DateOnly Birthdate { get; set; }
+    public DateOnly? Birthdate { get; set; }
 
     public string? Role { get; set; }
 }

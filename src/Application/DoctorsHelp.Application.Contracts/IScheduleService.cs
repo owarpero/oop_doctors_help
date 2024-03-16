@@ -4,11 +4,11 @@ namespace DoctorsHelp.Application.Contracts;
 
 public interface IScheduleService
 {
-    Review Create(Employee employee, DateTime dateStart, DateTime dateEnd);
+    Schedule Create(int employeeId, DateTime? dateStart, DateTime? dateEnd);
 
-    Review GeSchedule(int employeeId);
+    Schedule? GetSchedule(int scheduleId);
 
-    Review Update(int id, Dictionary<string, string> data);
+    Schedule Update(int id, Dictionary<string, string> data);
 
     bool Delete(int id);
 }
