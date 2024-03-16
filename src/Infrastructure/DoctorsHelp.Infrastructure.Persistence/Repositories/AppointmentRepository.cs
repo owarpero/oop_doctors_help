@@ -1,14 +1,31 @@
 using DoctorsHelp.Application.Models;
 using DoctorsHelp.Infrastructure.Persistence.Contexts;
+using DoctorsHelp.Infrastructure.Persistence.Interfaces;
 using Infrastructure.Persistence.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DoctorsHelp.Infrastructure.Persistence.Repositories;
 
-public class AppointmentRepository : RepositoryBase<Appointment, AppointmentModel>
+public class AppointmentRepository : RepositoryBase<Appointment, AppointmentModel>, IAppointmentRepository
 {
     public AppointmentRepository(ApplicationDbContext context) : base(context)
     {
+    }
+
+    public AppointmentModel GetAppointment(int id)
+    {
+        return GetEntry(new Appointment { Id = id }).Entity;
+    }
+
+    public void UpdateAppointment(Appointment appointment)
+    {
+        Update(appointment);
+    }
+
+    public bool Delete(Appointment appointment)
+    {
+        Remove(appointment);
+        return true;
     }
 
     protected override DbSet<AppointmentModel> DbSet => ((ApplicationDbContext)Context).Appointments;

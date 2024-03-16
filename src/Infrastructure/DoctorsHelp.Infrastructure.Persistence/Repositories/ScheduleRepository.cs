@@ -1,14 +1,26 @@
 using DoctorsHelp.Application.Models;
 using DoctorsHelp.Infrastructure.Persistence.Contexts;
+using DoctorsHelp.Infrastructure.Persistence.Interfaces;
 using Infrastructure.Persistence.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DoctorsHelp.Infrastructure.Persistence.Repositories;
 
-public class ScheduleRepository : RepositoryBase<Schedule, ScheduleModel>
+public class ScheduleRepository : RepositoryBase<Schedule, ScheduleModel>, IScheduleRepository
 {
     public ScheduleRepository(ApplicationDbContext context) : base(context)
     {
+    }
+
+    public ScheduleModel GetSchedule(int id)
+    {
+        return GetEntry(new Schedule { Id = id }).Entity;
+    }
+
+    public bool Delete(Schedule schedule)
+    {
+        Remove(schedule);
+        return true;
     }
 
     protected override DbSet<ScheduleModel> DbSet => ((ApplicationDbContext)Context).Schedules;

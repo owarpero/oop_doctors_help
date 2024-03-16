@@ -2,11 +2,11 @@ namespace Infrastructure.Persistence.Models;
 
 public class EmployeeModel
 {
-    public int Id { get; set; }
+    public int? Id { get; set; }
 
     public Guid UserId { get; set; }
 
-    public int SpecializationId { get; set; }
+    public int? SpecializationId { get; set; }
 
     public string? Graduate { get; set; }
 

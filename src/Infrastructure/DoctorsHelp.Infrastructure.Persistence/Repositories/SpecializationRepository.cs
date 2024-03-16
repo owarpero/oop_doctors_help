@@ -1,14 +1,31 @@
 using DoctorsHelp.Application.Models;
 using DoctorsHelp.Infrastructure.Persistence.Contexts;
+using DoctorsHelp.Infrastructure.Persistence.Interfaces;
 using Infrastructure.Persistence.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DoctorsHelp.Infrastructure.Persistence.Repositories;
 
-public class SpecializationRepository : RepositoryBase<Specialization, SpecializationModel>
+public class SpecializationRepository : RepositoryBase<Specialization, SpecializationModel>, ISpecializationRepository
 {
     public SpecializationRepository(ApplicationDbContext context) : base(context)
     {
+    }
+
+    public void UpdateSpecialization(Specialization specialization)
+    {
+        Update(specialization);
+    }
+
+    public SpecializationModel GetSpecialization(int id)
+    {
+        return GetEntry(new Specialization { Id = id }).Entity;
+    }
+
+    public bool Delete(Specialization specialization)
+    {
+        Remove(specialization);
+        return true;
     }
 
     protected override DbSet<SpecializationModel> DbSet => ((ApplicationDbContext)Context).Specializations;

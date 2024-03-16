@@ -1,14 +1,31 @@
 using DoctorsHelp.Application.Models;
 using DoctorsHelp.Infrastructure.Persistence.Contexts;
+using DoctorsHelp.Infrastructure.Persistence.Interfaces;
 using Infrastructure.Persistence.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DoctorsHelp.Infrastructure.Persistence.Repositories;
 
-public class ReviewRepository : RepositoryBase<Review, ReviewModel>
+public class ReviewRepository : RepositoryBase<Review, ReviewModel>, IReviewRepository
 {
     public ReviewRepository(ApplicationDbContext context) : base(context)
     {
+    }
+
+    public ReviewModel GetReview(int id)
+    {
+        return GetEntry(new Review { Id = id }).Entity;
+    }
+
+    public void UpdateReview(Review review)
+    {
+        Update(review);
+    }
+
+    public bool Delete(Review review)
+    {
+        Remove(review);
+        return true;
     }
 
     protected override DbSet<ReviewModel> DbSet => ((ApplicationDbContext)Context).Reviews;

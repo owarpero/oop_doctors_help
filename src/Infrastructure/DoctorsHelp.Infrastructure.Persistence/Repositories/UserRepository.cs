@@ -1,14 +1,31 @@
 using DoctorsHelp.Application.Models;
 using DoctorsHelp.Infrastructure.Persistence.Contexts;
+using DoctorsHelp.Infrastructure.Persistence.Interfaces;
 using Infrastructure.Persistence.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DoctorsHelp.Infrastructure.Persistence.Repositories;
 
-public class UserRepository : RepositoryBase<User, UserModel>
+public class UserRepository : RepositoryBase<User, UserModel>, IUserRepository
 {
     public UserRepository(ApplicationDbContext context) : base(context)
     {
+    }
+
+    public UserModel GetUser(Guid id)
+    {
+        return GetEntry(new User { Id = id }).Entity;
+    }
+
+    public void UpdateUser(User user)
+    {
+        Update(user);
+    }
+
+    public bool Delete(User user)
+    {
+        Remove(user);
+        return true;
     }
 
     protected override DbSet<UserModel> DbSet => ((ApplicationDbContext)Context).Users;

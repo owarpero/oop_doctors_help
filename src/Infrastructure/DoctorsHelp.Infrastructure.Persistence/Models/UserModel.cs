@@ -2,7 +2,7 @@ namespace Infrastructure.Persistence.Models;
 
 public class UserModel
 {
-    public Guid Id { get; set; }
+    public Guid? Id { get; set; }
 
     public string? Name { get; set; }
 
@@ -14,7 +14,7 @@ public class UserModel
 
     public string? HashedPassword { get; set; }
 
-    public DateOnly Birthdate { get; set; }
+    public DateOnly? Birthdate { get; set; }
 
     public string? Role { get; set; }
 }

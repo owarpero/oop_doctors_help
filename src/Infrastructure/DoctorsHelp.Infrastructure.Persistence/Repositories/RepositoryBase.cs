@@ -49,7 +49,7 @@ public abstract class RepositoryBase<TEntity, TModel> where TModel : class
 
     protected abstract void UpdateModel(TModel model, TEntity entity);
 
-    private EntityEntry<TModel> GetEntry(TEntity entity)
+    protected EntityEntry<TModel> GetEntry(TEntity entity)
     {
         TModel? existing = DbSet.Local.FirstOrDefault(model => Equal(entity, model));
 
