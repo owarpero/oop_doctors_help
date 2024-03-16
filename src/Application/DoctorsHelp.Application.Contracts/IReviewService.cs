@@ -6,7 +6,7 @@ public interface IReviewService
 {
     Review Create(Appointment appointment, int grade, string comment);
 
-    Review GetReview(int appointmentId);
+    Review? GetReview(int reviewId);
 
     Review Update(int id, Dictionary<string, string> data);
 

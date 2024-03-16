@@ -4,13 +4,11 @@ namespace DoctorsHelp.Application.Contracts;
 
 public interface IUserService
 {
-    User Register(string name, string surname, string phone, string email, string password, DateTime birthdate);
+    User Register(string name, string surname, string phone, string email, string password, DateOnly birthdate);
 
-    User Login(string phone, string password);
+    User? GetUser(Guid id);
 
-    User GetUser(int id);
+    User UpdateUser(Guid id, Dictionary<string, string> data);
 
-    User Update(int id, Dictionary<string, string> data);
-
-    bool Delete(int id);
+    bool DeleteUser(Guid id);
 }

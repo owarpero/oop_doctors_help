@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <ItemGroup>
+        <ProjectReference Include="..\..\Infrastructure\DoctorsHelp.Infrastructure.Persistence\DoctorsHelp.Infrastructure.Persistence.csproj" />
         <ProjectReference Include="..\DoctorsHelp.Application.Models\DoctorsHelp.Application.Models.csproj"/>
     </ItemGroup>
 
