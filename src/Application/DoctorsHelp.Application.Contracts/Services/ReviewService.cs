@@ -15,7 +15,7 @@ public class ReviewService : IReviewService
         _reviewRepository = reviewRepository;
     }
 
-    public Review Create(Appointment appointment, int grade, string comment)
+    public Review Create(Appointment appointment, int? grade, string comment)
     {
         var review = new Review
         {

@@ -15,7 +15,7 @@ public class ScheduleService : IScheduleService
         _scheduleRepository = scheduleRepository;
     }
 
-    public Schedule Create(Employee employee, DateTime dateStart, DateTime dateEnd)
+    public Schedule Create(Employee employee, DateTime? dateStart, DateTime? dateEnd)
     {
         var schedule = new Schedule
         {

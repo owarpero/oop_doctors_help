@@ -4,7 +4,7 @@ namespace DoctorsHelp.Application.Contracts;
 
 public interface IUserService
 {
-    User Register(string name, string surname, string phone, string email, string password, DateOnly birthdate);
+    User Register(string name, string surname, string phone, string email, string password, DateOnly? birthdate);
 
     User? GetUser(Guid id);
 

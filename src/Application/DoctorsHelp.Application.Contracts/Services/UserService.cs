@@ -15,7 +15,7 @@ public class UserService : IUserService
         _userRepository = userRepository;
     }
 
-    public User Register(string name, string surname, string phone, string email, string password, DateOnly birthdate)
+    public User Register(string name, string surname, string phone, string email, string password, DateOnly? birthdate)
     {
         var user = new User
         {
