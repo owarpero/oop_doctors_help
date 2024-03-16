@@ -4,7 +4,4 @@
         <ProjectReference Include="..\DoctorsHelp.Application.Models\DoctorsHelp.Application.Models.csproj"/>
     </ItemGroup>
 
-    <ItemGroup>
-    </ItemGroup>
-
 </Project>
