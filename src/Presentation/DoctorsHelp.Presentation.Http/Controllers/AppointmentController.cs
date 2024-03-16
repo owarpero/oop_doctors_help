@@ -1,5 +1,6 @@
 using DoctorsHelp.Application.Contracts;
 using DoctorsHelp.Application.Models;
+using DoctorsHelp.Presentation.Http.Requests;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DoctorsHelp.Presentation.Http.Controllers;
@@ -27,16 +28,11 @@ public class AppointmentController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<Appointment> Post([FromBody] Appointment appointment)
+    public ActionResult<Appointment> Post([FromBody] AppointmentPost data)
     {
-        if (appointment.Patient == null || appointment.Schedule == null)
-        {
-            return BadRequest("Patient and Schedule are required.");
-        }
-
         try
         {
-            var createdAppointment = _appointmentService.Create(appointment.Patient, appointment.Schedule);
+            var createdAppointment = _appointmentService.Create(data.PatientId, data.ScheduleId);
             return CreatedAtAction(nameof(Get), new { id = createdAppointment.Id }, createdAppointment);
         }
         catch (Exception ex)

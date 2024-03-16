@@ -9,14 +9,18 @@ namespace DoctorsHelp.Application.Contracts.Services;
 public class ReviewService : IReviewService
 {
     private readonly IReviewRepository _reviewRepository;
+    private readonly IAppointmentRepository _appointmentRepository;
 
-    public ReviewService(ReviewRepository reviewRepository)
+    public ReviewService(ReviewRepository reviewRepository, AppointmentRepository appointmentRepository)
     {
         _reviewRepository = reviewRepository;
+        _appointmentRepository = appointmentRepository;
     }
 
-    public Review Create(Appointment appointment, int? grade, string comment)
+    public Review Create(int appointmentId, int? grade, string comment)
     {
+        Appointment appointment = AppointmentConverter.AppointmentModelToAppointment(_appointmentRepository.GetAppointment(appointmentId));
+
         var review = new Review
         {
             Appointment = appointment,

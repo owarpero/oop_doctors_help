@@ -1,5 +1,6 @@
 using DoctorsHelp.Application.Contracts;
 using DoctorsHelp.Application.Models;
+using DoctorsHelp.Presentation.Http.Requests;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DoctorsHelp.Presentation.Http.Controllers;
@@ -28,16 +29,16 @@ public class ReviewController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<Review> Post([FromBody] Review review)
+    public ActionResult<Review> Post([FromBody] ReviewPost data)
     {
-        if (review.Appointment == null || review.Grade < 1 || string.IsNullOrWhiteSpace(review.Comment) || review.Grade == null)
+        if (data.Grade < 1 || string.IsNullOrWhiteSpace(data.Comment))
         {
             return BadRequest("Appointment, Grade, and Comment are required.");
         }
 
         try
         {
-            var createdReview = _reviewService.Create(review.Appointment, review.Grade, review.Comment);
+            var createdReview = _reviewService.Create(data.AppointmentId, data.Grade, data.Comment);
             return CreatedAtAction(nameof(Get), new { id = createdReview.Id }, createdReview);
         }
         catch (Exception ex)

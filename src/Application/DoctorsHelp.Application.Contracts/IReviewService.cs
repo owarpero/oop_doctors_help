@@ -4,7 +4,7 @@ namespace DoctorsHelp.Application.Contracts;
 
 public interface IReviewService
 {
-    Review Create(Appointment appointment, int? grade, string comment);
+    Review Create(int appointmentId, int? grade, string comment);
 
     Review? GetReview(int reviewId);
 

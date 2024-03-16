@@ -9,14 +9,18 @@ namespace DoctorsHelp.Application.Contracts.Services;
 public class ScheduleService : IScheduleService
 {
     private readonly IScheduleRepository _scheduleRepository;
+    private readonly IEmployeeRepository _employeeRepository;
 
-    public ScheduleService(ScheduleRepository scheduleRepository)
+    public ScheduleService(ScheduleRepository scheduleRepository, EmployeeRepository employeeRepository)
     {
         _scheduleRepository = scheduleRepository;
+        _employeeRepository = employeeRepository;
     }
 
-    public Schedule Create(Employee employee, DateTime? dateStart, DateTime? dateEnd)
+    public Schedule Create(int employeeId, DateTime? dateStart, DateTime? dateEnd)
     {
+        Employee employee = EmployeeConverter.EmployeeModelToEmployee(_employeeRepository.GetEmployee(employeeId));
+
         var schedule = new Schedule
         {
             // Assuming Appointment has a constructor or properties for this

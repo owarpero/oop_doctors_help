@@ -4,7 +4,7 @@ namespace DoctorsHelp.Application.Contracts;
 
 public interface IEmployeeService
 {
-    Employee Create(User user, Specialization specialization, string graduate, string experience);
+    Employee Create(Guid userId, int specializationId, string graduate, string experience);
 
     Employee? GetEmployee(int employeeId);
 

@@ -1,5 +1,6 @@
 using DoctorsHelp.Application.Contracts;
 using DoctorsHelp.Application.Models;
+using DoctorsHelp.Presentation.Http.Requests;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DoctorsHelp.Presentation.Http.Controllers;
@@ -28,16 +29,16 @@ public class EmployeeController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<Employee> Post([FromBody] Employee employee)
+    public ActionResult<Employee> Post([FromBody] EmployeePost data)
     {
-        if (employee.User == null || employee.Specialization == null || string.IsNullOrWhiteSpace(employee.Graduate) || string.IsNullOrWhiteSpace(employee.Experience))
+        if (string.IsNullOrWhiteSpace(data.Graduate) || string.IsNullOrWhiteSpace(data.Experience))
         {
             return BadRequest("User, Specialization, Graduate, and Experience are required.");
         }
 
         try
         {
-            var createdEmployee = _employeeService.Create(employee.User, employee.Specialization, employee.Graduate, employee.Experience);
+            var createdEmployee = _employeeService.Create(data.UserId, data.SpecializationId, data.Graduate, data.Experience);
             return CreatedAtAction(nameof(Get), new { id = createdEmployee.Id }, createdEmployee);
         }
         catch (Exception ex)

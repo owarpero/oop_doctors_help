@@ -9,14 +9,21 @@ namespace DoctorsHelp.Application.Contracts.Services;
 public class EmployeeService : IEmployeeService
 {
     private readonly IEmployeeRepository _employeeRepository;
+    private readonly IUserRepository _userRepository;
+    private readonly ISpecializationRepository _specializationRepository;
 
-    public EmployeeService(EmployeeRepository appointmentRepository)
+    public EmployeeService(EmployeeRepository appointmentRepository, UserRepository userRepository, SpecializationRepository specializationRepository)
     {
         _employeeRepository = appointmentRepository;
+        _userRepository = userRepository;
+        _specializationRepository = specializationRepository;
     }
 
-    public Employee Create(User user, Specialization specialization, string graduate, string experience)
+    public Employee Create(Guid userId, int specializationId, string graduate, string experience)
     {
+        User user = UserConverter.UserModelToUser(_userRepository.GetUser(userId));
+        Specialization specialization = SpecializationConverter.SpecializationModelToSpecialization(_specializationRepository.GetSpecialization(specializationId));
+
         var employee = new Employee
         {
             User = user,

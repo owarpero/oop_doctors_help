@@ -9,14 +9,21 @@ namespace DoctorsHelp.Application.Contracts.Services;
 public class AppointmentService : IAppointmentService
 {
     private readonly IAppointmentRepository _appointmentRepository;
+    private readonly IUserRepository _patientRepository;
+    private readonly IScheduleRepository _scheduleRepository;
 
-    public AppointmentService(AppointmentRepository appointmentRepository)
+    public AppointmentService(AppointmentRepository appointmentRepository, UserRepository userRepository, ScheduleRepository scheduleRepository)
     {
         _appointmentRepository = appointmentRepository;
+        _patientRepository = userRepository;
+        _scheduleRepository = scheduleRepository;
     }
 
-    public Appointment Create(User patient, Schedule schedule)
+    public Appointment Create(Guid patientId, int scheduleId)
     {
+        User patient = UserConverter.UserModelToUser(_patientRepository.GetUser(patientId));
+        Schedule schedule = ScheduleConverter.ScheduleModelToSchedule(_scheduleRepository.GetSchedule(scheduleId));
+
         var appointment = new Appointment
         {
             // Assuming Appointment has a constructor or properties for this

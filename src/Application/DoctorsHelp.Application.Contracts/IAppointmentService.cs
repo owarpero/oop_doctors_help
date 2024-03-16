@@ -4,7 +4,7 @@ namespace DoctorsHelp.Application.Contracts;
 
 public interface IAppointmentService
 {
-    Appointment Create(User patient, Schedule schedule);
+    Appointment Create(Guid patientId, int scheduleId);
 
     Appointment? GetAppointment(int patientId);
 

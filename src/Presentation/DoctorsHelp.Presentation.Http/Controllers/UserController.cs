@@ -1,5 +1,6 @@
 using DoctorsHelp.Application.Contracts;
 using DoctorsHelp.Application.Models;
+using DoctorsHelp.Presentation.Http.Requests;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DoctorsHelp.Presentation.Http.Controllers;
@@ -28,20 +29,20 @@ public class UserController : ControllerBase
     }
 
     [HttpPost("register")]
-    public ActionResult<User> Register([FromBody] User userdata)
+    public ActionResult<User> Register([FromBody] UserPost data)
     {
-        if (string.IsNullOrWhiteSpace(userdata.Name) ||
-            string.IsNullOrWhiteSpace(userdata.Surname) ||
-            string.IsNullOrWhiteSpace(userdata.Phone) ||
-            string.IsNullOrWhiteSpace(userdata.Email) ||
-            string.IsNullOrWhiteSpace(userdata.HashedPassword))
+        if (string.IsNullOrWhiteSpace(data.Name) ||
+            string.IsNullOrWhiteSpace(data.Surname) ||
+            string.IsNullOrWhiteSpace(data.Phone) ||
+            string.IsNullOrWhiteSpace(data.Email) ||
+            string.IsNullOrWhiteSpace(data.Password))
         {
             return BadRequest("All fields are required.");
         }
 
         try
         {
-            var user = _userService.Register(userdata.Name, userdata.Surname, userdata.Phone, userdata.Email, userdata.HashedPassword, userdata.Birthdate);
+            var user = _userService.Register(data.Name, data.Surname, data.Phone, data.Email, data.Password, data.Birthdate);
             return CreatedAtAction(nameof(Get), new { id = user.Id }, user);
         }
         catch (Exception ex)

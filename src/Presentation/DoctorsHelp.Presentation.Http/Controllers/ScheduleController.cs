@@ -1,5 +1,6 @@
 using DoctorsHelp.Application.Contracts;
 using DoctorsHelp.Application.Models;
+using DoctorsHelp.Presentation.Http.Requests;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DoctorsHelp.Presentation.Http.Controllers;
@@ -28,21 +29,21 @@ public class ScheduleController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<Schedule> Post([FromBody] Schedule schedule)
+    public ActionResult<Schedule> Post([FromBody] SchedulePost data)
     {
-        if (schedule.Employee == null || schedule.DateStart == default || schedule.DateEnd == default)
+        if (data.DateStart == default || data.DateEnd == default)
         {
             return BadRequest("Employee, DateStart, and DateEnd are required.");
         }
 
-        if (schedule.DateStart >= schedule.DateEnd)
+        if (data.DateStart >= data.DateEnd)
         {
             return BadRequest("DateStart must be before DateEnd.");
         }
 
         try
         {
-            var createdSchedule = _scheduleService.Create(schedule.Employee, schedule.DateStart, schedule.DateEnd);
+            var createdSchedule = _scheduleService.Create(data.EmployeeId, data.DateStart, data.DateEnd);
             return CreatedAtAction(nameof(Get), new { id = createdSchedule.Id }, createdSchedule);
         }
         catch (Exception ex)

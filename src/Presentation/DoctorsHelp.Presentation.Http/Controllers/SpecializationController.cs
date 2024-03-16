@@ -1,5 +1,6 @@
 using DoctorsHelp.Application.Contracts;
 using DoctorsHelp.Application.Models;
+using DoctorsHelp.Presentation.Http.Requests;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DoctorsHelp.Presentation.Http.Controllers;
@@ -28,16 +29,16 @@ public class SpecializationController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<Specialization> Post([FromBody] Specialization specialization)
+    public ActionResult<Specialization> Post([FromBody] SpecializationPost data)
     {
-        if (specialization.Name == null || specialization.Description == null)
+        if (data.Name == null || data.Description == null)
         {
             return BadRequest("Name and Description are required.");
         }
 
         try
         {
-            var createdSpecialization = _specializationService.Create(specialization.Name, specialization.Description);
+            var createdSpecialization = _specializationService.Create(data.Name, data.Description);
             return CreatedAtAction(nameof(Get), new { id = createdSpecialization.Id }, createdSpecialization);
         }
         catch (Exception ex)
